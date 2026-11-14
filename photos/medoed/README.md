@@ -1,0 +1,1 @@
+Фото Медоеда. Загрузите JPG, PNG или WEBP через Add file → Upload files.
