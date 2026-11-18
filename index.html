@@ -7,31 +7,52 @@
 @media(max-width:850px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:70px 23px 85px}.wrap{padding:48px 15px}.viewer{padding:65px 12px 95px}.viewer img{max-height:calc(100vh - 170px)}header{padding:20px}}
 @media(max-width:500px){.gallery{grid-template-columns:1fr}.hero p{font-size:15px}.hero h1{font-size:50px}h2{font-size:41px}header small{display:none}.tile img{aspect-ratio:4/3}}
 
-/* Image-first layout: show every product cover uncropped */
-.hero{position:relative;isolation:isolate;overflow:hidden;min-height:570px}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#10261b 0%,#10261be8 38%,#10261b25 100%);pointer-events:none;z-index:-1}
-.hero-image{position:absolute;z-index:-2;top:0;right:0;width:56%;height:100%;object-fit:contain;object-position:center right;filter:drop-shadow(0 12px 35px #071c1180);opacity:.94}
-.hero .kicker,.hero h1,.hero p,.hero button{position:relative;z-index:1}
-.hero p{max-width:520px}
-.tile{display:flex;flex-direction:column}
-.tile .image-wrap{width:100%;height:370px;background:#f2f0e8;display:flex;align-items:center;justify-content:center;padding:12px}
-.tile img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;object-position:center;display:block}
+/* Premium hero: clear text column + separate transparent product composition */
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:650px;padding:72px max(24px,calc((100vw - 1450px)/2)) 78px;background:radial-gradient(ellipse at 77% 48%,#28513a 0%,#173526 42%,#0c1d15 100%);display:grid;grid-template-columns:minmax(390px,.88fr) minmax(520px,1.12fr);align-items:center;gap:16px}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(90deg,transparent 45%,#d9c18a0a 100%)}
+.hero-copy{position:relative;z-index:2;max-width:620px}
+.hero-image{position:relative;z-index:1;width:100%;height:auto;max-height:610px;object-fit:contain;object-position:center;filter:drop-shadow(0 24px 32px #06140d80)}
+.hero h1{font:normal clamp(48px,5.5vw,82px)/1.02 Georgia,serif;letter-spacing:-.05em;margin:22px 0}
+.hero h1 em{color:#dac295;font-weight:400}
+.hero p{max-width:510px;line-height:1.75;color:#d0dfd5;font-size:16px}
+.hero .kicker,.hero h1,.hero p,.hero button{position:relative;z-index:2}
+.hero button{background:#dac295;border:0;padding:15px 25px;border-radius:40px;color:#1a3023;font-weight:bold;margin-top:18px}
+.wrap{max-width:1450px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:22px}
+.tile{display:flex;flex-direction:column;min-width:0}
+.tile .image-wrap{width:100%;height:auto;min-height:0;background:linear-gradient(145deg,#f2f0e8,#faf9f4);display:flex;align-items:center;justify-content:center;padding:14px}
+.tile img{display:block;width:100%;height:auto;max-height:560px;aspect-ratio:auto;object-fit:contain;object-position:center}
 .tile .info{margin-top:auto}
-@media(max-width:850px){.hero-image{width:72%;opacity:.38;object-position:right center}.hero::after{background:linear-gradient(90deg,#10261bf5,#10261b99)}.tile .image-wrap{height:290px}}
-@media(max-width:500px){.hero{min-height:490px}.hero-image{width:100%;opacity:.23}.hero::after{background:#10261b8f}.tile .image-wrap{height:330px}}
+.fats-banner{max-width:1450px;margin:0 auto 80px;padding:0 24px}
+.fats-banner img{display:block;width:100%;height:auto;max-height:440px;object-fit:contain;border-radius:18px;background:#f5f2e9;box-shadow:0 16px 45px #1e2d1c12}
+.fats-caption{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 4px 0;color:#415448}
+.fats-caption strong{font:normal 28px Georgia,serif;color:#20392b}
+.fats-caption span{font-size:12px;letter-spacing:.12em;color:#8a7650}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:0;padding:58px 24px 35px;min-height:0}.hero-copy{max-width:100%}.hero-image{width:min(100%,650px);max-height:480px;margin:0 auto}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.fats-banner{padding:0 15px}}
+@media(max-width:560px){.hero{padding:48px 20px 28px}.hero h1{font-size:clamp(43px,11vw,58px)}.hero p{font-size:14px}.hero-image{max-height:350px}.gallery{grid-template-columns:1fr;gap:16px}.tile .image-wrap{padding:10px}.tile img{max-height:500px}.fats-caption{display:block}.fats-caption span{display:block;margin-top:8px}.fats-caption strong{font-size:24px}}
 </style><script src="photos.js" defer></script></head>
 <body><header><b>ТАЁЖНИЦА ✳</b><small>КОЛЛЕКЦИЯ ПРОДУКЦИИ</small></header>
-<section class="hero"><img id="hero-image" class="hero-image" alt="" decoding="async" fetchpriority="high"><div class="kicker">ФОТОКАТАЛОГ · ТАЁЖНИЦА И МЕДОЕД</div><h1>Природа.<br>Вкус. <em>История.</em></h1><p>Фотографии продукции, новые коллекции и подарочные серии. Выберите бренд и рассмотрите каждую упаковку.</p><button id="go">Смотреть фотографии ↓</button></section>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="kicker">ФОТОКАТАЛОГ · ТАЁЖНИЦА И МЕДОЕД</div>
+    <h1>Природа.<br>Вкус. <em>История.</em></h1>
+    <p>Фотографии продукции, новые коллекции и подарочные серии. Выберите бренд и рассмотрите каждую упаковку.</p>
+    <button id="go">Смотреть фотографии ↓</button>
+  </div>
+  <img class="hero-image" src="assets/hero-composition.webp" alt="Коллекция продукции Таёжница и Медоед" fetchpriority="high">
+</section>
 <main class="wrap" id="catalog"><h2>Коллекция</h2><div id="count"></div><nav class="tabs" aria-label="Выбор бренда"><button class="tab active" data-brand="all">Все фотографии</button><button class="tab" data-brand="taezhnitsa">Таёжница</button><button class="tab" data-brand="medoed">Медоед шоколад</button></nav><div id="gallery" class="gallery"></div></main>
+<section class="fats-banner" aria-label="Линейка натуральных жиров">
+  <img src="featured/fats.webp" alt="Натуральные жиры Таёжницы — ассортимент продукции">
+  <div class="fats-caption"><strong>Натуральные жиры Таёжницы</strong><span>СИБИРСКАЯ ПРИРОДА · НАТУРАЛЬНЫЙ СОСТАВ</span></div>
+</section>
 <footer>ТАЁЖНИЦА × МЕДОЕД ШОКОЛАД · ФОТОКАТАЛОГ</footer>
 <div id="viewer" class="viewer" role="dialog" aria-modal="true" aria-label="Просмотр фотографии"><button class="control close" id="close" aria-label="Закрыть">×</button><button class="control prev" id="prev" aria-label="Предыдущее фото">‹</button><img id="big" alt=""><button class="control next" id="next" aria-label="Следующее фото">›</button><div class="caption"><span id="bigTitle"></span><small id="n"></small></div><button class="control share" id="share" aria-label="Поделиться фотографией">↗</button></div><div id="msg"></div>
 <script>
 window.addEventListener('DOMContentLoaded',()=>{
  const photos=Array.isArray(window.CATALOG_PHOTOS)?window.CATALOG_PHOTOS:[],grid=document.querySelector('#gallery'),viewer=document.querySelector('#viewer'),big=document.querySelector('#big');let brand='all',shown=[],pos=-1,start=0;
  const q=s=>document.querySelector(s);
- const heroPhoto=photos.find(p=>p.brand==='medoed'&&/грильяж|шоколад/i.test(p.title))||photos.find(p=>p.brand==='taezhnitsa')||photos[0];
- if(heroPhoto){q('#hero-image').src=heroPhoto.thumb||heroPhoto.src;q('#hero-image').alt=heroPhoto.title;}
- else {q('#hero-image').style.display='none';}
+ 
  const toast=m=>{q('#msg').textContent=m;q('#msg').style.display='block';setTimeout(()=>q('#msg').style.display='none',2200)};
  function render(){shown=photos.filter(p=>brand==='all'||p.brand===brand);grid.replaceChildren();q('#count').textContent=shown.length+' фотографий';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.brand===brand));if(!shown.length){let e=document.createElement('div');e.className='empty';e.innerHTML='<h3>Фотографии появятся здесь</h3><p>Новые обложки добавим, когда они будут готовы.</p>';grid.append(e);return}
  shown.forEach((p,i)=>{const b=document.createElement('button');b.className='tile';b.setAttribute('aria-label','Открыть фото '+p.title);const cover=document.createElement('div');cover.className='image-wrap';const img=document.createElement('img');img.src=p.thumb||p.src;img.loading=i<3?'eager':'lazy';img.decoding='async';img.alt=p.title;img.fetchPriority=i<3?'high':'auto';cover.append(img);const d=document.createElement('div');d.className='info';const small=document.createElement('small');small.textContent=p.brand==='medoed'?'МЕДОЕД ШОКОЛАД':'ТАЁЖНИЦА';const title=document.createElement('strong');title.textContent=p.title;d.append(small,title);b.append(cover,d);b.onclick=()=>open(i);grid.append(b)})}
