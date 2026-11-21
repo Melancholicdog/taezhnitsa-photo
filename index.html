@@ -8,9 +8,9 @@
 @media(max-width:500px){.gallery{grid-template-columns:1fr}.hero p{font-size:15px}.hero h1{font-size:50px}h2{font-size:41px}header small{display:none}.tile img{aspect-ratio:4/3}}
 
 /* Premium hero: clear text column + separate transparent product composition */
-.hero{position:relative;isolation:isolate;overflow:hidden;min-height:650px;padding:72px max(24px,calc((100vw - 1450px)/2)) 78px;background:radial-gradient(ellipse at 77% 48%,#28513a 0%,#173526 42%,#0c1d15 100%);display:grid;grid-template-columns:minmax(390px,.88fr) minmax(520px,1.12fr);align-items:center;gap:16px}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:510px;padding:72px max(24px,calc((100vw - 1450px)/2)) 78px;background:radial-gradient(ellipse at 77% 48%,#28513a 0%,#173526 42%,#0c1d15 100%);display:flex;align-items:center}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(90deg,transparent 45%,#d9c18a0a 100%)}
-.hero-copy{position:relative;z-index:2;max-width:620px}
+.hero-copy{position:relative;z-index:2;max-width:780px}
 .hero-image{position:relative;z-index:1;width:100%;height:auto;max-height:610px;object-fit:contain;object-position:center;filter:drop-shadow(0 24px 32px #06140d80)}
 .hero h1{font:normal clamp(48px,5.5vw,82px)/1.02 Georgia,serif;letter-spacing:-.05em;margin:22px 0}
 .hero h1 em{color:#dac295;font-weight:400}
@@ -39,7 +39,6 @@
     <p>Фотографии продукции, новые коллекции и подарочные серии. Выберите бренд и рассмотрите каждую упаковку.</p>
     <button id="go">Смотреть фотографии ↓</button>
   </div>
-  <img class="hero-image" src="assets/hero-composition.webp" alt="Коллекция продукции Таёжница и Медоед" fetchpriority="high">
 </section>
 <main class="wrap" id="catalog"><h2>Коллекция</h2><div id="count"></div><nav class="tabs" aria-label="Выбор бренда"><button class="tab active" data-brand="all">Все фотографии</button><button class="tab" data-brand="taezhnitsa">Таёжница</button><button class="tab" data-brand="medoed">Медоед шоколад</button></nav><div id="gallery" class="gallery"></div></main>
 <section class="fats-banner" aria-label="Линейка натуральных жиров">
