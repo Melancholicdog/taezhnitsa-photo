@@ -57,6 +57,11 @@ def main():
         seen=set()
         for photo in sorted(folder.iterdir(),key=lambda f:normalized(f.name).casefold()):
             if not photo.is_file() or photo.suffix.lower() not in ALLOWED:continue
+            # This landscape promotional image does not fit the product-card gallery.
+            # Preserve both Unicode variants of the source file in GitHub.
+            if brand=="taezhnitsa" and normalized(photo.stem).casefold()=="сибирский кочевник среди снежных вершин":
+                print("Excluded landscape promo from gallery:",photo.name)
+                continue
             fingerprint=hashlib.sha256(photo.read_bytes()).hexdigest()
             if fingerprint in seen:
                 print("Skipped duplicate",photo.name)
